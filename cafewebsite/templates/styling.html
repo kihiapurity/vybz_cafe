@@ -1,0 +1,456 @@
+{% load static %}
+
+<style>
+    /* Add your custom CSS styles here */
+    .custom-brand-logo {
+        width: 100px; /* Set the width of the logo */
+        height: 100px; /* Set the height of the logo */
+        border-radius: 50%; /* Make it round */
+        animation: shine 2s infinite; /* Add shining animation */
+    }
+
+    /* Define a keyframes animation for shining */
+    @keyframes shine {
+        0% {
+            filter: brightness(1);
+        }
+        50% {
+            filter: brightness(1.3); /* Adjust brightness for shining effect */
+        }
+        100% {
+            filter: brightness(1);
+        }
+    }
+
+    /* Custom Phone.css */
+    .custom-phone-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        position: relative;
+    }
+
+    .custom-phone {
+        /* Styling for the phone details on the right */
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: left;
+        text-align: left;
+        padding: 20px;
+        flex: 1;
+    }
+
+    /* Style the navigation bar */
+    .custom-navbar {
+        background-color: #007BFF;
+    }
+
+    .custom-navbar-brand {
+        font-size: 56px;
+        text-transform: uppercase;
+        color: #1C2833;
+        text-decoration: none;
+    }
+
+    .custom-brand-name {
+    font-family: 'Arial', sans-serif;
+    font-size: 58px;
+    color: #1C2833;
+    text-decoration: none;
+    font-weight: bold;
+    font-style: italic; 
+    /* Uncomment the line below to enable text-transform */
+    /* text-transform: uppercase; */
+}
+
+
+    .first-letter {
+        font-family: "Gill Sans Extrabold", sans-serif;
+        font-size: 75px;
+        color: #FD0248;
+    }
+
+    .custom-nav-item {
+        list-style-type: none; /* Remove list-style */
+        font-size: 35px;
+    }
+    
+    .update-card img {
+        max-width: 350px; /* Increase the max width to make the image larger */
+        max-height: 350px; /* Increase the max height to make the image larger */
+        transition: transform 0.3s;
+        cursor: pointer;
+    }
+    
+    .update-card img:hover {
+        transform: scale(1.1);
+        max-width: 450px; /* Increase the max width on hover if desired */
+        max-height: 450px; /* Increase the max height on hover if desired */
+    }
+    
+
+    .update-card {
+        border: 10px solid transparent;
+        background-clip: padding-box, border-box;
+        border-image: linear-gradient(45deg, #FF6347, #00FF7F, #1E90FF) 30;
+        border-image-slice: 1;
+        animation: rotateColors 5s linear infinite;
+        width: auto; /* Adjust the width to fit content */
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+    }
+    
+    @keyframes rotateColors {
+        0% {
+            border-image-source: linear-gradient(45deg, #FF6347, #00FF7F, #1E90FF);
+        }
+        25% {
+            border-image-source: linear-gradient(45deg, #1E90FF, #FF6347, #00FF7F);
+        }
+        50% {
+            border-image-source: linear-gradient(45deg, #00FF7F, #1E90FF, #FF6347);
+        }
+        75% {
+            border-image-source: linear-gradient(45deg, #FF6347, #00FF7F, #1E90FF);
+        }
+        100% {
+            border-image-source: linear-gradient(45deg, #FF6347, #00FF7F, #1E90FF);
+        }
+    }
+    .carousel-inner .carousel-item img {
+        max-width: 450px !important; /* Set max-width with !important */
+        max-height: 550px !important; /* Set max-height with !important */
+        transition: transform 0.3s;
+        cursor: pointer;
+    }
+    
+    .carousel-inner .carousel-item img:hover {
+        transform: scale(1.1);
+        max-width: 550px !important; /* Set max-width on hover with !important */
+        max-height: 650px !important; /* Set max-height on hover with !important */
+    }
+    
+    .animate-phone {
+        animation: movePhone 4s alternate infinite linear;
+    }
+    
+    @keyframes movePhone {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(20px); /* Adjust the movement distance as needed */
+        }
+    }
+    
+
+    .home-button-container {
+        display: flex;
+        left: 1px;
+        align-items: center; /* Center vertically */
+        justify-content: center; /* Center horizontally */
+    }
+
+
+    .custom-nav-link {
+        text-decoration: none; 
+        padding: 2px; 
+        background-color: #8B4513;
+        color: white; 
+        border: none;
+        left: 1px;
+        border-radius: 20%;
+    }
+
+    
+    
+
+    .custom-phone img {
+        max-width: 450px;
+        max-height: 450px;
+        transition: transform 0.3s;
+    }
+
+    .custom-phone img.custom-enlarge {
+        max-width: 450px;
+        max-height: 450px;
+        transition: transform 0.3s;
+        cursor: pointer;
+    }
+
+    .custom-phone img.custom-enlarge:hover, .custom-phone img.custom-enlarged {
+        transform: scale(1.1);
+        max-width: 550px;
+        max-height: 550px;
+    }
+
+    .custom-btn {
+        background-color: #979A9A;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        margin: 10px;
+    }
+
+
+    .custom-button-container {
+        position: fixed;
+        top: 10px;
+        right: 20px;
+    }
+    
+    /* Media query for smaller screens */
+@media (max-width: 768px) {
+.custom-button-container {
+    position: fixed;
+    top: 5px;
+    right: 20px;
+}
+
+.custom-btn {
+    display: block;
+    margin: 10px 0; /* Add some vertical spacing between the buttons */
+}
+}
+
+
+
+
+    .custom-container {
+        padding: 0;
+        border: 5px solid transparent;
+        background-clip: padding-box;
+        border-image: linear-gradient(45deg, #ff0000, #00ff00, #0000ff) 1;
+        border-image-slice: 1;
+    }
+
+    .custom-welcome-message {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #007BFF; /* Change the color to your preference */
+        margin-top: 20px; /* Adjust the margin as needed */
+    }
+
+    .custom-phone .custom-btn-description {
+        background-color: #007BFF;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        margin: 10px;
+    }
+
+    .custom-phone-details {
+        background-color: #f9f9f9;
+        flex: 1;
+        padding: 20px;
+        border: 1px solid #ddd;
+        display: none;
+        text-align: left;
+        width: max-content;
+        right: 0;
+    }
+
+    .custom-phone-details h4 {
+        margin-bottom: 10px;
+    }
+
+    .custom-btn-close {
+        background-color: #dc3545;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        margin: 10px 0;
+    }
+
+    .custom-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #f9f9f9;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+
+
+    /* Define a keyframes animation for shining */
+    @keyframes shine {
+        0% {
+            filter: brightness(1);
+        }
+        50% {
+            filter: brightness(1.3); /* Adjust brightness for shining effect */
+        }
+        100% {
+            filter: brightness(1);
+        }
+    }
+
+    .carousel-inner .carousel-item img {
+        max-width: 200px;
+        max-height: 200px;
+        transition: transform 0.3s;
+        cursor: pointer;
+    }
+
+    .carousel-inner .carousel-item img:hover {
+        transform: scale(1.1);
+        max-width: 350px;
+        max-height: 350px;
+    }
+
+    /* Update the styles for the footer */
+
+.footer {
+background-color: #333;
+color: #fff;
+padding: 2px 0;
+text-align: center;
+position: relative; /* Make the footer fixed */
+bottom: 0; /* Position it at the bottom of the viewport */
+width: 100%; /* Make it span the entire width of the viewport */
+z-index: 999; /* Adjust the z-index as needed */
+}
+
+.footer-text {
+font-size: 14px;
+}
+
+.heart-icon {
+font-size: 20px;
+color: palevioletred;
+margin-right: 5px;
+}
+
+.footer-link {
+font-size: 24px;
+color: #fff;
+margin: 0 15px;
+}
+
+/* Facebook */
+.footer-link.facebook-link {
+color: #1877f2;
+}
+
+/* Twitter */
+.footer-link.twitter-link {
+color: #1da1f2;
+}
+
+/* Instagram */
+.footer-link.instagram-link {
+color: #bc2a8d;
+}
+
+/* WhatsApp */
+.footer-link.whatsapp-link {
+color: #25d366;
+}
+
+/* Center the About Us link */
+.footer-link.about-us {
+display: block;
+margin: 10px auto;
+text-align: center;
+}
+
+.navbar-fixed-top {
+/* position: sticky; */
+top: 0;
+z-index: 3;
+}
+
+.image-container {
+max-width: 100%; /* Adjust this value as needed */
+overflow: hidden;
+}
+
+
+#updateCarousel .container {
+border: none;
+}
+.updates-carousel {
+background-color: #f2f2f2;
+padding: 10px;
+border: 1px solid #ddd;
+margin-top: 20px;
+text-align: center;
+}
+
+.update-item {
+display: flex;
+align-items: center;
+}
+
+.update-price {
+font-weight: bold;
+color: #007bff;
+}
+
+.update-description {
+margin-top: 5px;
+font-size: 14px;
+}
+
+/* Style the container for the twinkling-text */
+.twinkling-text-container {
+    text-align: center;
+    width: max-content;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid transparent;
+    animation: rotateBorder 5s linear infinite, twinkling 5s infinite;
+    background: linear-gradient(45deg, rgba(255, 128, 0, 0.3), rgba(0, 191, 255, 0.3)); /* Adjust the color of the twinkling background */
+}
+
+@keyframes rotateBorder {
+    0% {
+        border-color: #FF6347;
+    }
+    25% {
+        border-color: #00FF7F;
+    }
+    50% {
+        border-color: #1E90FF;
+    }
+    75% {
+        border-color: #FF6347;
+    }
+    100% {
+        border-color: #00FF7F;
+    }
+}
+
+@keyframes twinkling {
+    0% {
+        background: linear-gradient(45deg, rgba(255, 128, 0, 0.3), rgba(0, 191, 255, 0.3));
+    }
+    25% {
+        background: linear-gradient(45deg, rgba(0, 191, 255, 0.3), rgba(255, 128, 0, 0.3));
+    }
+    50% {
+        background: linear-gradient(45deg, rgba(0, 191, 255, 0.3), rgba(255, 128, 0, 0.3));
+    }
+    75% {
+        background: linear-gradient(45deg, rgba(255, 128, 0, 0.3), rgba(0, 191, 255, 0.3));
+    }
+    100% {
+        background: linear-gradient(45deg, rgba(255, 128, 0, 0.3), rgba(0, 191, 255, 0.3));
+    }
+}
+</style>
+

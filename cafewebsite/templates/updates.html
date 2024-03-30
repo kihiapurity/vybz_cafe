@@ -1,0 +1,37 @@
+<!-- cafewebsite\templates\updates.html -->
+
+
+{% load static %}
+{% include 'bootstrap_includes.html' %}
+
+
+<div class="updates-carousel mt-5 mx-auto text-center">
+    <div class="twinkling-text-container">
+        <h2 class="twinkling-text"><b>{{ home_settings.twinkling_text }}</b></h2>
+    </div>
+
+    <!-- Carousel for updates -->
+    <div id="updateCarousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            {% for update in updates %}
+                <li data-bs-target="#updateCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+            {% endfor %}
+        </ol>
+
+        <!-- Carousel Slides -->
+        <div class="carousel-inner">
+            {% for update in updates %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="update-card">
+                        <p class="card-text"><b>{{ update.description }}</b></p>
+                        <img src="{{ update.image.url }}" alt="{{ update.description }}" class="card-img-top animate-phone">
+                        <div class="card-body">
+                            <h3 class="card-title">Ksh. {{ update.price }}</h3>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>      
+    </div>
+</div>

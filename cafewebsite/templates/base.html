@@ -1,0 +1,53 @@
+<!-- Api\templates\base.html -->
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vybz Cafe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    {% include 'styling.html' %}
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="custom-navbar">
+        <a class="custom-navbar-brand" href="{% url 'home' %}">
+            <img src="{{ home_settings.brand_logo.url }}" alt="Brand Logo" class="custom-brand-logo">
+            <span class="custom-brand-name">
+                <span class="first-letter">V</span>ybz Cafe
+            </span>
+        </a>
+        
+        <div class="custom-navbar-links">
+            {% comment %} <ul class="custom-navbar-nav">
+                <li class="custom-nav-item">
+                    <a class="custom-nav-link" href="">
+                        Home
+                    </a>
+                </li>
+            </ul>            {% endcomment %}
+
+            <div class="custom-button-container">
+                {% if user.is_authenticated and user.is_staff %}
+                    {% comment %} <a href="{% url 'phone-list-create' %}" class="custom-btn custom-btn-primary">Add Phone</a> {% endcomment %}
+                    <a href="{% url 'update-list-create' %}" class="custom-btn custom-btn-primary">Add An Update</a>
+                    <!-- Add more navigation links as needed -->
+                {% endif %}
+            </div>
+            
+
+        </div>
+    </nav>
+    
+
+    <!-- Content Section -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

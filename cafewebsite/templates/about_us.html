@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  /* Center the content in the middle of the page */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  /* Style the content area with a border and rotating colors */
+  .about-container {
+    padding: 20px;
+    border: 5px solid transparent;
+    border-image: linear-gradient(45deg, #f06, #16a085, #0074b9) 1;
+    border-image-slice: 1;
+    animation: rotateColors 10s linear infinite;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+/* Define the smoke animation */
+@keyframes smoke {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Apply the animation to the container */
+.about-container {
+    animation: smoke 5s linear infinite;
+}
+
+
+
+  /* Style the image to have a specific width and rounded corners */
+  .custom-about-image {
+    width: 100%; /* Make the image full width */
+    display: block; /* Center the image */
+    border-radius: 15px;
+  }
+
+  /* Style the heading to be centered and in a different color */
+  .about-container h2 {
+    text-align: center;
+    color: #d35400; /* or any other desired color */
+  }
+
+  /* Style the paragraph text in the about section */
+  .about-container p {
+    text-align: justify;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+</style>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 about-container">
+      <h2 class="text-primary">About Vybz Cafe</h2>
+      <p class="lead">
+        Vybz Cafe is a charming and innovative cafe that is redefining the coffee experience for our community. Our mission is to create a warm and inviting space where every visit feels like a delightful escape.
+      </p>
+      <p class="lead">
+        From our carefully curated menu featuring specialty coffees, teas, and artisanal pastries to our cozy ambiance designed for comfort and connection, we are committed to providing exceptional service and quality products.
+      </p>
+      <p class="lead">
+        At Vybz Cafe, we prioritize sustainability and locally sourced ingredients, ensuring that every sip and bite not only delights your taste buds but also supports our environment and community. Whether you're stopping by for your morning pick-me-up, meeting friends for a leisurely brunch, or seeking a quiet corner to work, our cafe welcomes you with open arms.
+      </p>
+      <p class="lead">
+        Join us on this journey as we embark on creating memorable moments, fostering meaningful connections, and becoming a beloved gathering place in Embu. Discover the difference at Vybz Cafe - where passion meets perfection in every cup.
+      </p>
+    </div>
+    <div class="col-md-6 about-container">
+      <!-- Add a container for the image with custom styling -->
+    </div>
+  </div>
+</div>
+{% endblock %}
